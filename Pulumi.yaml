@@ -1,0 +1,3 @@
+name: shared
+description: Creates a shared infrastructure stack
+runtime: nodejs
