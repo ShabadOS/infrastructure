@@ -4,9 +4,9 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
-    "sourceMap": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   }
 }
