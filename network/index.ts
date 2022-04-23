@@ -16,6 +16,9 @@ export = async ( {
 }: Options ) => {
   const virtualNetwork = new VirtualNetwork( `${environment.name}-virtual-network`, {
     resourceGroupName: resourceGroup.name,
+    addressSpace: {
+      addressPrefixes: [ '10.0.0.0/16' ],
+    },
   } )
 
   const subnet = new Subnet( `${environment.name}-subnet`, {
