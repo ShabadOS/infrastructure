@@ -22,7 +22,6 @@ export = async ( {
       count: 1,
       vmSize: 'Standard_F2s_v2',
       vnetSubnetID: subnet.id,
-      scaleSetPriority: 'Spot',
     } ],
     dnsPrefix: resourceGroup.name,
     enableRBAC: true,
