@@ -29,6 +29,11 @@ export = async ( {
       clientId: application.id,
       secret: servicePrincipalPassword.value,
     },
+    networkProfile: {
+      networkPlugin: 'Azure',
+      serviceCidr: '10.10.0.0/16',
+      dnsServiceIP: '10.10.0.10',
+    },
   } )
 
   const kubeconfig = listManagedClusterUserCredentialsOutput( {
