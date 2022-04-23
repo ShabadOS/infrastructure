@@ -14,16 +14,19 @@ export = async ( {
   azure: { subscriptionId },
   identity: { resourceGroup, servicePrincipal },
 }: Options ) => {
+  const addressPrefix = '10.0.0.0/16'
+
   const virtualNetwork = new VirtualNetwork( `${environment.name}-virtual-network`, {
     resourceGroupName: resourceGroup.name,
     addressSpace: {
-      addressPrefixes: [ '10.0.0.0/16' ],
+      addressPrefixes: [ addressPrefix ],
     },
   } )
 
   const subnet = new Subnet( `${environment.name}-subnet`, {
     resourceGroupName: resourceGroup.name,
     virtualNetworkName: virtualNetwork.name,
+    addressPrefix,
   } )
 
   const subnetAssignment = new RoleAssignment( `${environment.name}-subnet-permissions`, {
