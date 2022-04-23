@@ -18,6 +18,7 @@ export = async ( {
     kubernetesVersion: '',
     agentPoolProfiles: [ {
       name: 'default',
+      mode: 'System',
       count: 1,
       vmSize: 'Standard_F2s_v2',
       vnetSubnetID: subnet.id,
