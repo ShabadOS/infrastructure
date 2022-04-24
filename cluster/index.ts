@@ -30,7 +30,7 @@ export = async ( {
       secret: servicePrincipalPassword.value,
     },
     networkProfile: {
-      networkPlugin: 'Azure',
+      networkPlugin: 'azure',
       serviceCidr: '10.10.0.0/16',
       dnsServiceIP: '10.10.0.10',
     },
