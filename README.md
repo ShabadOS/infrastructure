@@ -21,6 +21,18 @@ We run the bulk of our resources on Azure. Resources are colocated when this mak
 
 This folder exports shared identity resources around service principals, environment applications, and resource groups.
 
+### Network
+
+Networking resources such as shared virtual networks, subnets, and assignments are defined here.
+
+### Cluster
+
+The kubernetes cluster for the environment is defined here. This module also exports a reusable kubeconfig.
+
+## GitHub Secrets
+
+Any additional GitHub secrets that are derived from the shared resources above are declared in this module, for example, the kubeconfig for cluster access.
+
 ## Deployment
 
 Once a pull request has been opened, `pulumi preview` is run and the output is posted as a comment back onto the PR.
