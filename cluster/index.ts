@@ -26,7 +26,7 @@ export = async ( {
     dnsPrefix: resourceGroup.name,
     enableRBAC: true,
     servicePrincipalProfile: {
-      clientId: application.id,
+      clientId: application.applicationId,
       secret: servicePrincipalPassword.value,
     },
     networkProfile: {
