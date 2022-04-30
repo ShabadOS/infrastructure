@@ -27,7 +27,11 @@ Networking resources such as shared virtual networks, subnets, and assignments a
 
 ### Cluster
 
-The kubernetes cluster for the environment is defined here. This module also exports a reusable kubeconfig.
+The kubernetes cluster for the environment is defined here. This module also exports a reusable kubeconfig and provider.
+
+### Cluster Applications
+
+Shared workloads and applications that sit on the kubernetes cluster are defined here, such as Ingress controllers.
 
 ## GitHub Secrets
 
