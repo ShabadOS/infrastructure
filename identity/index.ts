@@ -15,7 +15,9 @@ export = async () => {
     endDate: '2099-01-01T00:00:00Z',
   } )
 
-  const resourceGroup = new ResourceGroup( environment.name )
+  const resourceGroup = new ResourceGroup( environment.name, {
+    resourceGroupName: environment.name,
+  } )
 
   return { application, servicePrincipal, servicePrincipalPassword, resourceGroup }
 }
