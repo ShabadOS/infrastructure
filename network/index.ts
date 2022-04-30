@@ -2,7 +2,6 @@ import { PrincipalType, RoleAssignment } from '@pulumi/azure-native/authorizatio
 import { Subnet, VirtualNetwork } from '@pulumi/azure-native/network'
 
 import azure from '../helpers/azure'
-import * as environment from '../helpers/environment'
 import identity from '../identity'
 
 type Options = {
@@ -14,20 +13,18 @@ export = async ( {
   azure: { subscriptionId },
   identity: { resourceGroup, servicePrincipal },
 }: Options ) => {
-  const virtualNetwork = new VirtualNetwork( `${environment.name}-virtual-network`, {
+  const virtualNetwork = new VirtualNetwork( 'virtual-network', {
     resourceGroupName: resourceGroup.name,
-    addressSpace: {
-      addressPrefixes: [ '10.0.0.0/16' ],
-    },
+    addressSpace: { addressPrefixes: [ '10.0.0.0/16' ] },
   } )
 
-  const subnet = new Subnet( `${environment.name}-subnet`, {
+  const subnet = new Subnet( 'subnet', {
     resourceGroupName: resourceGroup.name,
     virtualNetworkName: virtualNetwork.name,
     addressPrefix: '10.0.0.0/24',
   } )
 
-  const subnetAssignment = new RoleAssignment( `${environment.name}-subnet-permissions`, {
+  const subnetAssignment = new RoleAssignment( 'subnet-permissions', {
     principalId: servicePrincipal.id,
     principalType: PrincipalType.ServicePrincipal,
     scope: subnet.id,

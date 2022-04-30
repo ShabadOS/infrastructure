@@ -1,7 +1,6 @@
 import { listManagedClusterUserCredentialsOutput, ManagedCluster } from '@pulumi/azure-native/containerservice'
 import { Provider } from '@pulumi/kubernetes'
 
-import * as environment from '../helpers/environment'
 import identity from '../identity'
 import network from '../network'
 
@@ -14,7 +13,7 @@ export = async ( {
   identity: { application, resourceGroup, servicePrincipalPassword },
   network: { subnet },
 }: Options ) => {
-  const cluster = new ManagedCluster( `${environment.name}-cluster`, {
+  const cluster = new ManagedCluster( 'cluster', {
     resourceGroupName: resourceGroup.name,
     kubernetesVersion: '',
     agentPoolProfiles: [ {
