@@ -1,4 +1,5 @@
 import { listManagedClusterUserCredentialsOutput, ManagedCluster } from '@pulumi/azure-native/containerservice'
+import { Provider } from '@pulumi/kubernetes'
 
 import * as environment from '../helpers/environment'
 import identity from '../identity'
@@ -41,5 +42,7 @@ export = async ( {
     resourceGroupName: resourceGroup.name,
   } ).apply( ( { kubeconfigs } ) => Buffer.from( kubeconfigs[ 0 ].value, 'base64' ).toString() )
 
-  return { cluster, kubeconfig }
+  const provider = new Provider( 'kubernetes-provider', { kubeconfig } )
+
+  return { cluster, kubeconfig, provider }
 }
