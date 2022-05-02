@@ -9,7 +9,7 @@ type Options = {
 
 export = async ( { cluster: { kubeconfig } }: Options ) => {
   new ActionsOrganizationSecret( 'kubeconfig-github-secret', {
-    secretName: `${environment.name}__KUBECONFIG`,
+    secretName: `${environment.name.toUpperCase()}__KUBECONFIG`,
     visibility: 'all',
     plaintextValue: kubeconfig,
   } )
