@@ -10,7 +10,7 @@ export = async ( { identity: { resourceGroup } }: Options ) => {
   const logAnalyticsWorkspace = new Workspace( 'default-workspace', {
     resourceGroupName: resourceGroup.name,
     location: resourceGroup.location,
-    retentionInDays: 14,
+    retentionInDays: 30,
   } )
 
   return { logAnalyticsWorkspace }
