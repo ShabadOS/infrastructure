@@ -25,6 +25,10 @@ This folder exports shared identity resources around service principals, environ
 
 Networking resources such as shared virtual networks, subnets, and assignments are defined here.
 
+### Logging
+
+Logging Analytics workspace for Azure and any other logging setup resources.
+
 ### Cluster
 
 The kubernetes cluster for the environment is defined here. This module also exports a reusable kubeconfig and provider.

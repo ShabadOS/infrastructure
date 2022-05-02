@@ -2,16 +2,19 @@ import { listManagedClusterUserCredentialsOutput, ManagedCluster } from '@pulumi
 import { Provider } from '@pulumi/kubernetes'
 
 import identity from '../identity'
+import logging from '../logging'
 import network from '../network'
 
 type Options = {
   identity: Awaited<ReturnType<typeof identity>>,
   network: Awaited<ReturnType<typeof network>>,
+  logging: Awaited<ReturnType<typeof logging>>,
 }
 
 export = async ( {
   identity: { application, resourceGroup, servicePrincipalPassword },
   network: { subnet },
+  logging: { logAnalyticsWorkspace },
 }: Options ) => {
   const cluster = new ManagedCluster( 'cluster', {
     resourceGroupName: resourceGroup.name,
@@ -33,6 +36,14 @@ export = async ( {
       networkPlugin: 'azure',
       serviceCidr: '10.10.0.0/16',
       dnsServiceIP: '10.10.0.10',
+    },
+    addonProfiles: {
+      omsagent: {
+        enabled: true,
+        config: {
+          logAnalyticsWorkspaceResourceID: logAnalyticsWorkspace.id,
+        },
+      },
     },
   } )
 
