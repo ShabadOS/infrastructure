@@ -1,4 +1,5 @@
 import { helm } from '@pulumi/kubernetes'
+import { Config } from '@pulumi/pulumi'
 
 import cluster from '../cluster'
 
@@ -14,9 +15,7 @@ const certificateResolvers = [
   .map( ( [ key, value ] ) => [ `--certificatesresolvers.default.acme.${key}`, value ] )
   .map( ( option ) => option.join( '=' ) )
 
-export = ( {
-  cluster: { provider },
-}: Options ) => {
+const config = new Config()
   new helm.v3.Chart( 'traefik-ingress', {
     chart: 'traefik',
     version: '10.19.4',
@@ -28,10 +27,10 @@ export = ( {
       ports: {
         web: { redirectTo: 'websecure' },
       },
-      persistence: {
+      persistence: { enabled: true, path: acmeFolder, size: '128Mi' },
+      pilot: {
         enabled: true,
-        path: '/acme',
-        size: '128Mi',
+        token: config.requireSecret( 'traefikPilotToken' ),
       },
     },
   }, { provider } )

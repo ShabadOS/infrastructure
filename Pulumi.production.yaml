@@ -1,2 +1,4 @@
 config:
   azure-native:location: NorthEurope
+  shared:traefikPilotToken:
+    secure: AAABAKSRiS4Gr+Sn3YOZNTGr4CF7e/MA4ATXYmgZwC036yVdiu1WEhVVQ3Ilhc8cUVlv/ps41vDy0lgkp6IgzRDLqTk=
