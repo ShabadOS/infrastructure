@@ -17,4 +17,9 @@ export = async () => {
   await clusterApplications( { cluster } )
 
   await githubSecretsModule( { cluster } )
+
+  return {
+    logAnalyticsWorkspaceId: logging.logAnalyticsWorkspace.id,
+    kubeconfig: cluster.kubeconfig,
+  }
 }
