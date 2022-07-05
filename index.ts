@@ -20,6 +20,5 @@ export = async () => {
 
   return {
     logAnalyticsWorkspaceId: logging.logAnalyticsWorkspace.id,
-    kubeconfig: cluster.kubeconfig,
   }
 }
