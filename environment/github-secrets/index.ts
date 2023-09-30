@@ -1,7 +1,8 @@
 import { ActionsOrganizationSecret } from '@pulumi/github'
 
+import * as environment from '~/helpers/environment'
+
 import cluster from '../cluster'
-import * as environment from '../helpers/environment'
 
 type Options = {
   cluster: Awaited<ReturnType<typeof cluster>>,

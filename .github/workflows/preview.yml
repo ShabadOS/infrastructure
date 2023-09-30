@@ -12,34 +12,28 @@ jobs:
       matrix:
         command: ['lint', 'types']
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: lts
           cache: npm
-
       - run: npm ci
-
       - run: npm run ${{ matrix.command }}
 
-  preview:
+  preview-environment:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         environment: ['next', 'production']
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: lts
           cache: npm
-
       - run: npm ci
-
-      - uses: pulumi/actions@v3
+      - uses: pulumi/actions@v4
         with:
           command: preview
           stack-name: ShabadOS/${{ matrix.environment }}

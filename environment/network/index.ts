@@ -1,7 +1,8 @@
 import { PrincipalType, RoleAssignment } from '@pulumi/azure-native/authorization'
 import { Subnet, VirtualNetwork } from '@pulumi/azure-native/network'
 
-import azure from '../helpers/azure'
+import azure from '~/helpers/azure'
+
 import identity from '../identity'
 
 type Options = {
