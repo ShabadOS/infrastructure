@@ -1,7 +1,8 @@
+import azureModule from '~/helpers/azure'
+
 import clusterModule from './cluster'
 import clusterApplications from './cluster-applications'
 import githubSecretsModule from './github-secrets'
-import azureModule from './helpers/azure'
 import identityModule from './identity'
 import loggingModule from './logging'
 import networkModule from './network'
