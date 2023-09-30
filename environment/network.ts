@@ -3,7 +3,7 @@ import { Subnet, VirtualNetwork } from '@pulumi/azure-native/network'
 
 import azure from '~/helpers/azure'
 
-import identity from '../identity'
+import identity from './identity'
 
 type Options = {
   azure: Awaited<ReturnType<typeof azure>>,

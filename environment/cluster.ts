@@ -1,9 +1,9 @@
 import { listManagedClusterUserCredentialsOutput, ManagedCluster } from '@pulumi/azure-native/containerservice'
 import { Provider } from '@pulumi/kubernetes'
 
-import identity from '../identity'
-import logging from '../logging'
-import network from '../network'
+import identity from './identity'
+import logging from './logging'
+import network from './network'
 
 type Options = {
   identity: Awaited<ReturnType<typeof identity>>,
