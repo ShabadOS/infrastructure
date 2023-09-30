@@ -25,7 +25,7 @@
     "@pulumi/random": "^4.14.0"
   },
   "devDependencies": {
-    "@shabados/eslint-config": "^0.10.1",
+    "@shabados/eslint-config": "^0.11.0",
     "typescript": "^5.2.2"
   }
 }

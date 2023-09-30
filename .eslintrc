@@ -1,9 +1,6 @@
 {
   "root": true,
   "extends": ["@shabados/eslint-config", "@shabados/eslint-config/typescript"],
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
   "rules": {
     "no-new": "off"
   }
