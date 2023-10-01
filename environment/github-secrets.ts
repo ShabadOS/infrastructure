@@ -1,6 +1,6 @@
 import { ActionsOrganizationSecret } from '@pulumi/github'
 
-import * as environment from '~/helpers/environment'
+import * as environment from '~/shared/environment'
 
 import cluster from './cluster'
 
