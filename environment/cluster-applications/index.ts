@@ -5,6 +5,8 @@ type Options = {
   cluster: Awaited<ReturnType<typeof cluster>>,
 }
 
-export = async ( { cluster }: Options ) => {
+const clusterApplicationsModule = async ( { cluster }: Options ) => {
   traefik( { cluster } )
 }
+
+export default clusterApplicationsModule
