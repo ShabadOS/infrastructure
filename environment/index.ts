@@ -1,9 +1,9 @@
 import azureModule from '~/shared/azure'
+import identityModule from '~/shared/identity'
 
 import clusterModule from './cluster'
 import clusterApplications from './cluster-applications'
 import githubSecretsModule from './github-secrets'
-import identityModule from './identity'
 import loggingModule from './logging'
 import networkModule from './network'
 

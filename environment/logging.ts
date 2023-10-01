@@ -1,6 +1,6 @@
 import { Workspace } from '@pulumi/azure-native/operationalinsights'
 
-import identity from './identity'
+import identity from '~/shared/identity'
 
 type Options = {
   identity: Awaited<ReturnType<typeof identity>>,

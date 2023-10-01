@@ -1,7 +1,8 @@
 import { listManagedClusterUserCredentialsOutput, ManagedCluster } from '@pulumi/azure-native/containerservice'
 import { Provider } from '@pulumi/kubernetes'
 
-import identity from './identity'
+import identity from '~/shared/identity'
+
 import logging from './logging'
 import network from './network'
 

@@ -1,7 +1,7 @@
 import { getClientConfig } from '@pulumi/azure-native/authorization'
 
 export = async () => {
-  const { subscriptionId } = await getClientConfig()
+  const { subscriptionId, tenantId } = await getClientConfig()
 
-  return { subscriptionId }
+  return { subscriptionId, tenantId }
 }
