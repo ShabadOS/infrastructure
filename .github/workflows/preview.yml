@@ -37,6 +37,7 @@ jobs:
         with:
           command: preview
           stack-name: ShabadOS/${{ matrix.environment }}
+          work-dir: environment
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
