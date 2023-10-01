@@ -61,3 +61,15 @@ Some one-time setup needs to be done to provide GitHub Action jobs with secrets 
    `az ad sp create-for-rbac --name "github-app" --role contributor --scopes /subscriptions/{SubscriptionID}`. The values that are outputted should be added to [GitHub Action secrets](https://www.pulumi.com/registry/packages/azure-native/installation-configuration/)
 2. Grant it API permission access to: Microsoft Graph `Application.ReadWriteAll` - this can be done via `Azure Portal` > `App Registrations` > `All applications` > `github-app` > `API permissions` > `Add a permission`
 3. Grant admin consent for Shabad OS
+
+## Troubleshooting
+
+### Client keys expired in CI
+
+You'll see an error like this: `The provided client secret keys for app '***' are expired. Visit the Azure portal to create new keys for your app: https://aka.ms/NewClientSecret...`.
+
+This means that the Azure App Registration client secret has expired. To fix this:
+
+1. Retrieve the Azure App ID with the CLI: `az ad app list --display-name github-app --query "[].{AppID:appId}" -o tsv`
+1. Reset the client secret with the CLI: `az ad app credential reset --id {AppID}`
+1. Update the organisation's `ARM_CLIENT_SECRET` secret in GitHub with the new value
