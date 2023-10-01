@@ -1,4 +1,4 @@
-import azureModule from '~/helpers/azure'
+import azureModule from '~/shared/azure'
 
 import clusterModule from './cluster'
 import clusterApplications from './cluster-applications'
