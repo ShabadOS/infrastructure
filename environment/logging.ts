@@ -1,12 +1,12 @@
 import { Workspace } from '@pulumi/azure-native/operationalinsights'
 
-import identity from '~/shared/identity'
+import identity from '../shared/identity'
 
 type Options = {
   identity: Awaited<ReturnType<typeof identity>>,
 }
 
-export = async ( { identity: { resourceGroup } }: Options ) => {
+const loggingModule = async ( { identity: { resourceGroup } }: Options ) => {
   const logAnalyticsWorkspace = new Workspace( 'default-workspace', {
     resourceGroupName: resourceGroup.name,
     location: resourceGroup.location,
@@ -15,3 +15,5 @@ export = async ( { identity: { resourceGroup } }: Options ) => {
 
   return { logAnalyticsWorkspace }
 }
+
+export default loggingModule

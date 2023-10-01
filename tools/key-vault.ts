@@ -1,14 +1,14 @@
 import { keyvault } from '@pulumi/azure-native'
 
-import azure from '~/shared/azure'
-import identity from '~/shared/identity'
+import azure from '../shared/azure'
+import identity from '../shared/identity'
 
 type Options = {
   azure: Awaited<ReturnType<typeof azure>>,
   identity: Awaited<ReturnType<typeof identity>>,
 }
 
-export = async ( {
+const keyVaultModule = async ( {
   azure: { tenantId },
   identity: { resourceGroup, servicePrincipal },
 }: Options ) => new keyvault.Vault( 'shabad-os-tools', {
@@ -31,3 +31,5 @@ export = async ( {
     } ],
   },
 } )
+
+export default keyVaultModule

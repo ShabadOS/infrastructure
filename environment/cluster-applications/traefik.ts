@@ -21,7 +21,7 @@ const certificateResolvers = [
 
 const config = new Config()
 
-export = ( { cluster: { provider } }: Options ) => {
+const traefik = ( { cluster: { provider } }: Options ) => {
   new helm.v3.Chart( 'traefik-ingress', {
     chart: 'traefik',
     version: '10.19.4',
@@ -50,3 +50,5 @@ export = ( { cluster: { provider } }: Options ) => {
     },
   }, { provider } )
 }
+
+export default traefik

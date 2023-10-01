@@ -1,13 +1,12 @@
-import azureModule from '~/shared/azure'
-import identityModule from '~/shared/identity'
-
+import azureModule from '../shared/azure'
+import identityModule from '../shared/identity'
 import clusterModule from './cluster'
 import clusterApplications from './cluster-applications'
 import githubSecretsModule from './github-secrets'
 import loggingModule from './logging'
 import networkModule from './network'
 
-export = async () => {
+const stack = async () => {
   const azure = await azureModule()
 
   const identity = await identityModule()
@@ -23,3 +22,5 @@ export = async () => {
     logAnalyticsWorkspaceId: logging.logAnalyticsWorkspace.id,
   }
 }
+
+export = stack

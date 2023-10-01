@@ -1,8 +1,7 @@
 import { listManagedClusterUserCredentialsOutput, ManagedCluster } from '@pulumi/azure-native/containerservice'
 import { Provider } from '@pulumi/kubernetes'
 
-import identity from '~/shared/identity'
-
+import identity from '../shared/identity'
 import logging from './logging'
 import network from './network'
 
@@ -12,7 +11,7 @@ type Options = {
   logging: Awaited<ReturnType<typeof logging>>,
 }
 
-export = async ( {
+const clusterModule = async ( {
   identity: { application, resourceGroup, servicePrincipalPassword },
   network: { subnet },
   logging: { logAnalyticsWorkspace },
@@ -57,3 +56,5 @@ export = async ( {
 
   return { cluster, kubeconfig, provider }
 }
+
+export default clusterModule

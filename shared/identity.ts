@@ -1,9 +1,9 @@
 import { ResourceGroup } from '@pulumi/azure-native/resources'
 import { Application, ServicePrincipal, ServicePrincipalPassword } from '@pulumi/azuread'
 
-import * as environment from '~/shared/environment'
+import * as environment from './environment'
 
-export = async () => {
+const identityModule = async () => {
   const application = new Application( `${environment.name}-environment-app`, { displayName: `${environment.name}-environment-app` } )
 
   const servicePrincipal = new ServicePrincipal( `${environment.name}-environment-service-principal`, {
@@ -21,3 +21,5 @@ export = async () => {
 
   return { application, servicePrincipal, servicePrincipalPassword, resourceGroup }
 }
+
+export default identityModule

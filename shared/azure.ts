@@ -1,7 +1,9 @@
 import { getClientConfig } from '@pulumi/azure-native/authorization'
 
-export = async () => {
+const azureModule = async () => {
   const { subscriptionId, tenantId } = await getClientConfig()
 
   return { subscriptionId, tenantId }
 }
+
+export default azureModule

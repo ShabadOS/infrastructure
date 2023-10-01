@@ -1,15 +1,15 @@
 import { PrincipalType, RoleAssignment } from '@pulumi/azure-native/authorization'
 import { Subnet, VirtualNetwork } from '@pulumi/azure-native/network'
 
-import azure from '~/shared/azure'
-import identity from '~/shared/identity'
+import azure from '../shared/azure'
+import identity from '../shared/identity'
 
 type Options = {
   azure: Awaited<ReturnType<typeof azure>>,
   identity: Awaited<ReturnType<typeof identity>>,
 }
 
-export = async ( {
+const networkModule = async ( {
   azure: { subscriptionId },
   identity: { resourceGroup, servicePrincipal },
 }: Options ) => {
@@ -33,3 +33,5 @@ export = async ( {
 
   return { virtualNetwork, subnet, subnetAssignment }
 }
+
+export default networkModule
