@@ -7,7 +7,16 @@ const stack = async () => {
 
   const identity = await identityModule()
 
-  await keyVaultModule( { azure, identity } )
+  const keyVault = await keyVaultModule( { azure, identity } )
+
+  return {
+    azureSignTool: {
+      keyVaultUri: keyVault.location,
+      keyVaultClientId: identity.application.applicationId,
+      keyVaultClientSecret: identity.servicePrincipalPassword.value,
+      keyVaultCertificateName: 'EV-CodeSigning',
+    },
+  }
 }
 
 export = stack
