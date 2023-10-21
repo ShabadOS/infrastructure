@@ -31,6 +31,6 @@ const keyVaultModule = async ( {
       },
     } ],
   },
-} )
+}, { protect: true } )
 
 export default keyVaultModule
