@@ -11,7 +11,7 @@ const stack = async () => {
 
   return {
     azureSignTool: {
-      keyVaultUri: keyVault.location,
+      keyVaultUri: keyVault.properties.vaultUri,
       keyVaultClientId: identity.application.applicationId,
       keyVaultClientSecret: identity.servicePrincipalPassword.value,
       keyVaultCertificateName: 'EV-CodeSigning',
