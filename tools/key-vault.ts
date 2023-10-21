@@ -11,7 +11,8 @@ type Options = {
 const keyVaultModule = async ( {
   azure: { tenantId },
   identity: { resourceGroup, servicePrincipal },
-}: Options ) => new keyvault.Vault( 'shabad-os-tools', {
+}: Options) => new keyvault.Vault('shabad-os-tools', {
+  vaultName: 'shabad-os-tools',
   resourceGroupName: resourceGroup.name,
   location: resourceGroup.location,
   properties: {
