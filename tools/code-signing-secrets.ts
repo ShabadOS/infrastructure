@@ -10,12 +10,14 @@ type Options = {
 }
 
 const codeSigningSecretsModule = async ( {
-  identity: { application, servicePrincipalPassword },
   keyVault,
+  identity: { application, servicePrincipalPassword },
 }: Options ) => ( [
   [ 'url', 'URL', keyVault.properties.vaultUri ],
   [ 'application-id', 'APPLICATION_ID', application.applicationId ],
   [ 'client-secret', 'CLIENT_SECRET', servicePrincipalPassword.value ],
+  [ 'certificate-name', 'CERTIFICATE_NAME', 'EV-CodeSigning' ],
+  [ 'timestamp-url', 'TIMESTAMP_URL', 'http://timestamp.digicert.com' ],
 ] as const ).map( ( [
   name,
   secretName,

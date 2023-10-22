@@ -11,7 +11,7 @@ const stack = async () => {
 
   const keyVault = await keyVaultModule( { azure, identity } )
 
-  await codeSigningSecretsModule( { keyVault } )
+  await codeSigningSecretsModule( { keyVault, identity } )
   await azureSecretsModule( { azure, identity } )
 }
 
