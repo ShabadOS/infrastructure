@@ -32,6 +32,6 @@ const azureSecretsModule = async ( {
   secretName: `${environment.name.toUpperCase()}__AZURE_${secretName}`,
   visibility: 'all',
   plaintextValue: value as Output<string>,
-} ) )
+}, { deleteBeforeReplace: true } ) )
 
 export default azureSecretsModule

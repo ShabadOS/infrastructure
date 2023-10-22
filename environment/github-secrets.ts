@@ -12,7 +12,7 @@ const githubSecretsModule = async ( { cluster: { kubeconfig } }: Options ) => {
     secretName: `${environment.name.toUpperCase()}__KUBECONFIG`,
     visibility: 'all',
     plaintextValue: kubeconfig,
-  } )
+  }, { deleteBeforeReplace: true } )
 }
 
 export default githubSecretsModule
