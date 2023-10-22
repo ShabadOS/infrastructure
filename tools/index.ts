@@ -1,5 +1,6 @@
 import azureModule from '../shared/azure'
 import identityModule from '../shared/identity'
+import codeSigningSecretsModule from './code-signing-secrets'
 import keyVaultModule from './key-vault'
 
 const stack = async () => {
@@ -8,15 +9,7 @@ const stack = async () => {
   const identity = await identityModule()
 
   const keyVault = await keyVaultModule( { azure, identity } )
-
-  return {
-    azureSignTool: {
-      keyVaultUri: keyVault.properties.vaultUri,
-      keyVaultClientId: identity.application.applicationId,
-      keyVaultClientSecret: identity.servicePrincipalPassword.value,
-      keyVaultCertificateName: 'EV-CodeSigning',
-    },
-  }
+  await codeSigningSecretsModule( { keyVault, identity } )
 }
 
 export = stack
