@@ -1,5 +1,5 @@
 import { ActionsOrganizationSecret } from '@pulumi/github'
-import { Output } from '@pulumi/pulumi'
+import { jsonStringify, Output } from '@pulumi/pulumi'
 
 import azure from '../shared/azure'
 import * as environment from '../shared/environment'
@@ -18,7 +18,12 @@ const azureSecretsModule = async ( {
   [ 'subscription-id', 'SUBSCRIPTION_ID', subscriptionId ],
   [ 'client-id', 'CLIENT_ID', application.applicationId ],
   [ 'client-secret', 'CLIENT_SECRET', servicePrincipalPassword ],
-  [ 'credentials', 'CREDENTIALS', JSON.stringify( { tenantId, subscriptionId, clientId: application.applicationId, clientSecret: servicePrincipalPassword } ) ],
+  [ 'credentials', 'CREDENTIALS', jsonStringify( {
+    tenantId,
+    subscriptionId,
+    clientId: application.applicationId,
+    clientSecret: servicePrincipalPassword.value,
+  } ) ],
 ] as const ).map( ( [
   name,
   secretName,
